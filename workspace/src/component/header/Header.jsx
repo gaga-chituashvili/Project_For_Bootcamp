@@ -10,7 +10,7 @@ const Header = () => {
       <div className='flex justify-center items-center border border-solid border-black w-[250px] p-[20px] rounded-2xl'>
       <h2>თანამშრომლის შექმნა</h2>
      </div>
-     <div className='flex items-center gap-x-[20px] w-[300px] bg-slate-700 p-[20px] rounded-2xl'>
+     <div className='flex items-center gap-x-[20px] w-[300px] bg-slate-700 px-[10px] py-[20px] rounded-2xl'>
       <img className='w-[50px]' src={add}/>
       <h2 className='text-white'>შექმენი ახალი დავალება</h2>
      </div>
