@@ -36,7 +36,6 @@ const AddEmployee = ({ onClose, onAdd }) => {
     }
 
     const newEmployee = {
-
       name,
       surname,
       avatar: image,
@@ -120,7 +119,6 @@ const AddEmployee = ({ onClose, onAdd }) => {
           )}
         </article>
 
-        
         <article className="flex gap-x-[24px] mt-[24px]">
           <button onClick={onClose} className="px-[24px] py-[8px] border border-gray-400 rounded-md text-gray-600">
             გაუქმდა

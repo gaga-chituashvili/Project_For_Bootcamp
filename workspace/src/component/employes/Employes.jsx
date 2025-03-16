@@ -28,13 +28,16 @@ const Employee = ({ Employes }) => {
       : employees;
 
   return (
-    <section className="flex flex-col items-center">
-       <button
-        className="mt-6 px-6 py-2 bg-purple-600 text-white rounded-md"
+    <section className="flex flex-col items-center gap-y-[100px]">
+      <article className="relative">
+      <button
+        className="w-[300px] absolute top-0 left-[500px]  mt-6 px-6 py-2  flex justify-center items-center  p-[20px] rounded-2xl border border-solid border-[#8888EC] cursor-pointer"
         onClick={() => setShowAddEmployee(true)}
       >
         თანამშრომლის შექმნა
       </button>
+      </article>
+      
       <section className="flex flex-wrap justify-center gap-y-[30px] gap-x-[52px] relative">
         {loading && <ClimbingBoxLoader color="#827ec5" size={15} />}
         {filteredEmployees.map((employee) => (
@@ -44,8 +47,6 @@ const Employee = ({ Employes }) => {
           <p className="text-gray-500">No employees found</p>
         )}
       </section>
-
-
 
       {showAddEmployee && (
         <AddEmployee onClose={() => setShowAddEmployee(false)} onAdd={handleAddEmployee} />

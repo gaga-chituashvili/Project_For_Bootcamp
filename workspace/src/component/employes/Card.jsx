@@ -24,7 +24,10 @@ const Card = ({ employee }) => {
         <p>{currentdata()}</p>
       </article>
       <article className="flex flex-col gap-y-[12px]">
-      <h6 className="font-bold">Redberry-ს საიტის ლენდინგის დიზაინი</h6>
+        <article className="flex justify-center gap-x-[10px]">
+        <p className="font-bold">{employee.name}</p>
+        <p className="font-bold">{employee.surname}</p>
+        </article>
       <p>შექმენი საიტის მთავარი გვერდი, რომელიც მოიცავს მთავარ სექციებს, ნავიგაციას.</p>
       </article>
       <article className="flex justify-between">
