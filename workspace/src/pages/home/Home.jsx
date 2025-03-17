@@ -4,6 +4,7 @@ import { departaments } from "../../api/departaments";
 import { priorities } from "../../api/priorities";
 import direction from "../home/direction.svg";
 import Employes from "../../component/employes/Employes";
+import "../../reset.css"
 
 const colorPalette = ["#FF5733", "#FF0000", "#FF69B4", "#0000FF"];
 

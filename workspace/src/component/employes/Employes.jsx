@@ -3,6 +3,7 @@ import { getEmployees } from "../../api/employes";
 import Card from "./Card";
 import { ClimbingBoxLoader } from "react-spinners";
 import AddEmployee from "./AddEmployee";
+import "../../reset.css"
 
 const Employee = ({ Employes }) => {
   const [employees, setEmployees] = useState([]);

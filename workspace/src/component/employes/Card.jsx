@@ -1,6 +1,7 @@
 import React from "react";
 import Comments from "./Comments.svg"
 import level from "./level.svg"
+import "../../reset.css"
 
 const Card = ({ employee }) => {
   const shortname = employee.department.name.split(" ")[0];
@@ -15,7 +16,7 @@ const Card = ({ employee }) => {
     }
 
   return (
-    <article className="flex flex-col w-[381px]  border border-soli gap-y-[28px] border-orange-500 rounded-[15px] py-[20px] px-[30.5px]">
+    <article className="flex flex-col w-[381px]  border border-solid gap-y-[28px] border-orange-500 rounded-[15px] py-[20px] px-[30.5px]">
       <article className="flex justify-between">
         <img src={level}/>
         <article className=" bg-orange-500 py-[5px] px-[18.5px] rounded-2xl">
