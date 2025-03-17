@@ -4,7 +4,6 @@ import { departaments } from "../../api/departaments";
 import { priorities } from "../../api/priorities";
 import direction from "../home/direction.svg";
 import Employes from "../../component/employes/Employes";
-import "../../reset.css"
 
 const colorPalette = ["#FF5733", "#FF0000", "#FF69B4", "#0000FF"];
 
@@ -17,7 +16,6 @@ const Home = () => {
   const [showDepartments, setShowDepartments] = useState(false);
   const [priorit, setPriorit] = useState([]);
   const [selectedPriorities, setSelectedPriorities] = useState([]);
-  const [prioError, setPrioError] = useState("");
   const [showPriorities, setShowPriorities] = useState(false);
 
   useEffect(() => {
@@ -66,8 +64,6 @@ const Home = () => {
 
   function fetchPriorities() {
     priorities()
-      .then((priorit) => setPriorit(priorit))
-      .catch((error) => setPrioError(error));
   }
 
   function handlePriorityChange(priority) {

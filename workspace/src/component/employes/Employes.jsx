@@ -28,6 +28,7 @@ const Employee = ({ Employes }) => {
       ? employees.filter((emp) => Employes.includes(emp.department.name))
       : employees;
 
+
   return (
     <section className="flex flex-col items-center gap-y-[100px]">
       <article className="relative">
