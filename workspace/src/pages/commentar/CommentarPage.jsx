@@ -5,7 +5,8 @@ import calendar from "./calendar.svg"
 
 const CommentarPage = () => {
   return (
-    <section className="main_section">
+    <section className="main_section flex gap-x-[223px]">
+      <section>
       <section className="top-left_main_section flex flex-col gap-y-[20px] w-[715px]">
         <article className="flex gap-x-[18px]">
           <p>საშუალო</p>
@@ -43,6 +44,15 @@ const CommentarPage = () => {
             18/03/2025
         </article>
       </section>
+      </section>
+      <aside className="aside bg-slate-400 w-[741px] h-[975px]">
+       <textarea className="w-[651px] h-[135px] textre resize-none"/>
+       <button className="w-[155px] h-[35px] bg-[#8338EC] rounded-lg">დააკომენტარე</button>
+       <span>კომენტარები</span>
+       <section className="commentar_main_section">
+
+       </section>
+      </aside>
     </section>
   );
 };
