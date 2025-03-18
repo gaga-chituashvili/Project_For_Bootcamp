@@ -1,9 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Comments from "./Comments.svg";
 import "../../reset.css";
+import { routes } from "../../constant/route";
 
 const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
+
   const shortname = employee.department.name.split(" ")[0];
+
+   const navigate=useNavigate()
 
   const currentData = () => {
     const today = new Date();
@@ -35,7 +40,7 @@ const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
 
       <article className="flex justify-between">
         <img className="w-8 rounded-full" src={employee.avatar} alt={`${employee.name} Avatar`} />
-        <img src={Comments} alt="Comments Icon" />
+        <img onClick={()=>navigate(routes.commentar)} src={Comments} />
       </article>
     </article>
   );
