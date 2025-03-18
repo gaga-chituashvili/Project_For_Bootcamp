@@ -1,9 +1,12 @@
+
+
 import React, { useState, useEffect } from "react";
 import { departaments } from "../../api/departaments";
 import { priorities } from "../../api/priorities";
 import { statusApi } from "../../api/status";
 import down from "./down.svg";
 import "../../reset.css";
+import vector from "./vector.svg";
 
 const NewTask = () => {
   const [departments, setDepartments] = useState([]);
@@ -30,7 +33,9 @@ const NewTask = () => {
 
   function handlePriorityChange(priority) {
     setSelectedPriorities((prev) =>
-      prev.includes(priority) ? prev.filter((p) => p !== priority) : [...prev, priority]
+      prev.includes(priority)
+        ? prev.filter((p) => p !== priority)
+        : [...prev, priority]
     );
   }
 
@@ -43,23 +48,26 @@ const NewTask = () => {
 
   useEffect(() => {
     statusApi()
-      .then((data) => setStatusList(data)) 
+      .then((data) => setStatusList(data))
       .catch((error) => console.error(error));
   }, []);
 
   function handleStatusChange(status) {
     setSelectedStatus((prev) =>
-      prev.includes(status) ? prev.filter((s) => s !== status) : [...prev, status]
+      prev.includes(status)
+        ? prev.filter((s) => s !== status)
+        : [...prev, status]
     );
   }
 
   function handleStatus() {
     setShowStatus((prev) => !prev);
     if (!showStatus) {
-      statusApi()
+      statusApi();
     }
   }
 
+  
   return (
     <section className="flex flex-col gap-y-[25px] px-[118px] mb-[386px]">
       <h3 className="text-[34px] text-left">შექმენი ახალი დავალება</h3>
@@ -76,12 +84,16 @@ const NewTask = () => {
             </article>
 
             <article className="flex flex-col w-[550px] relative">
-              <label className="text-left text-gray-700 mb-1">დეპარტამენტი*</label>
+              <label className="text-left text-gray-700 mb-1">
+                დეპარტამენტი*
+              </label>
               <section
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="h-[45px] border border-solid border-gray-300 rounded-md flex justify-between items-center p-2 cursor-pointer"
               >
-                <article className="text-gray-500">{selectedDepartment}</article>
+                <article className="text-gray-500">
+                  {selectedDepartment}
+                </article>
                 <img src={down} />
               </section>
 
@@ -105,24 +117,6 @@ const NewTask = () => {
           </article>
 
           <article className="flex justify-between w-full">
-            <article className="flex flex-col w-[550px] h-[133px]">
-              <label className="text-left text-gray-700 mb-1">აღწერა*</label>
-              <textarea
-                className="p-2 border border-gray-300 rounded-md h-24 resize-none"
-                placeholder="შეიყვანე აღწერა"
-              ></textarea>
-            </article>
-            <article className="flex flex-col w-[550px] h-[45px]">
-              <label className="text-left text-gray-700 mb-1">პასუხისმგებელი თანამშრომელი*</label>
-              <select className="p-2 border border-gray-300 rounded-md">
-                <option>აირჩიეთ</option>
-                <option>გასაკეთებელი</option>
-                <option>დასრულებული</option>
-              </select>
-            </article>
-          </article>
-
-          <article className="flex justify-between w-full">
             <article className="flex gap-x-8">
               <article className="flex flex-col relative">
                 <label className="text-gray-700 mb-1">პრიორიტეტი*</label>
@@ -139,13 +133,22 @@ const NewTask = () => {
                 {showPriorities && (
                   <section className="absolute top-[100px] left-0 border border-gray-300 rounded-md bg-white shadow-md w-[259px] z-10 p-2">
                     {prioritiesList.map((priority) => (
-                      <label key={priority.id} className="flex items-center gap-2 p-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedPriorities.includes(priority.name)}
-                          onChange={() => handlePriorityChange(priority.name)}
-                          className="w-5 h-5 accent-blue-500"
-                        />
+                      <label
+                        key={priority.id}
+                        className="flex items-center gap-2 p-2 cursor-pointer"
+                      >
+                        <article
+                          className={`w-[22px] h-[22px] flex justify-center items-center border border-solid border-black cursor-pointer ${
+                            selectedPriorities.includes(priority.name) ||"bg-white"
+                          }`}
+                          onClick={() =>
+                            handlePriorityChange(priority.name)
+                          }
+                        >
+                          {selectedPriorities.includes(priority.name) && (
+                            <img src={vector} className="w-[16px] h-[16px]" />
+                          )}
+                        </article>
                         {priority.name}
                       </label>
                     ))}
@@ -168,13 +171,22 @@ const NewTask = () => {
                 {showStatus && (
                   <section className="absolute top-[100px] left-0 border border-gray-300 rounded-md bg-white shadow-md w-[259px] z-10 p-2">
                     {statusList.map((status) => (
-                      <label key={status.id} className="flex items-center gap-2 p-2 cursor-pointer">
-                        <input
-                          type="checkbox"
-                          checked={selectedStatus.includes(status.name)}
-                          onChange={() => handleStatusChange(status.name)}
-                          className="w-5 h-5 accent-blue-500"
-                        />
+                      <label
+                        key={status.id}
+                        className="flex items-center gap-2 p-2 cursor-pointer"
+                      >
+                        <article
+                          className={`w-[22px] h-[22px] flex justify-center items-center border border-solid border-black cursor-pointer ${
+                            selectedStatus.includes(status.name) || "bg-white"
+                          }`}
+                          onClick={() =>
+                            handleStatusChange(status.name)
+                          }
+                        >
+                          {selectedStatus.includes(status.name) && (
+                            <img src={vector} className="w-[16px] h-[16px]" />
+                          )}
+                        </article>
                         {status.name}
                       </label>
                     ))}
@@ -204,4 +216,3 @@ const NewTask = () => {
 };
 
 export default NewTask;
-
