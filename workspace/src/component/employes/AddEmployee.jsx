@@ -48,7 +48,7 @@ const AddEmployee = ({ onClose, onAdd }) => {
   };
 
   return (
-    <section className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50 z-10">
+    <section className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-50 z-20">
       <div className="flex flex-col items-center gap-y-10 border border-black p-14 w-[600px] bg-white rounded-lg shadow-lg relative">
         <img
           className="absolute right-3 top-3 cursor-pointer"

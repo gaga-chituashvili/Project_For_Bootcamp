@@ -53,6 +53,12 @@ const Home = () => {
     }
   }
 
+  useEffect(() => {
+    priorities()
+      .then((prior) => setPriorit(prior))
+      .catch((error) => console.log(error));
+  }, []);
+
   function handlePriorities() {
     const newPriorities = !showPriorities;
     setShowPriorities(newPriorities);
@@ -63,16 +69,14 @@ const Home = () => {
   }
 
   function fetchPriorities() {
-    priorities()
+    priorities();
   }
 
   function handlePriorityChange(priority) {
     const isSelected = selectedPriorities.includes(priority);
 
     if (isSelected) {
-      setSelectedPriorities(
-        selectedPriorities.filter((p) => p !== priority)
-      );
+      setSelectedPriorities(selectedPriorities.filter((p) => p !== priority));
     } else {
       setSelectedPriorities([...selectedPriorities, priority]);
     }
@@ -83,7 +87,7 @@ const Home = () => {
       <section className="flex pl-[118px]">
         <h3 className="text-[34px]">დავალებების გვერდი</h3>
       </section>
-      <section className="w-[688px] flex justify-center gap-x-[52px] py-[18.5px] px-[12px] border border-solid border-[#DEE2E6]">
+      <section className="w-[688px] flex justify-center gap-x-[52px] py-[18.5px] px-[12px] border border-solid border-[#DEE2E6] ml-[120px]">
         <article className="flex gap-x-[8px]" onClick={handleShowDepartments}>
           <h4>დეპარტამენტი</h4>
           <img className="w-[25px]" src={direction} alt="direction" />
@@ -99,11 +103,12 @@ const Home = () => {
       </section>
 
       {showDepartments && (
-        <article
-          className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white w-[400px] absolute z-10 top-[250px]"
-        >
+        <section className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white w-[400px] absolute z-10 top-[250px]">
           {departments.map((department, index) => (
-            <label key={index} className="flex items-center gap-3 cursor-pointer py-2">
+            <label
+              key={index}
+              className="flex items-center gap-3 cursor-pointer py-2"
+            >
               <input
                 type="checkbox"
                 checked={selectedDepartments.includes(department.name)}
@@ -113,15 +118,16 @@ const Home = () => {
               <span>{department.name}</span>
             </label>
           ))}
-        </article>
+        </section>
       )}
 
       {showPriorities && (
-        <article
-          className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white w-[400px] absolute z-10 top-[250px] left-[450px] cursor-pointer"
-        >
+        <article className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white w-[400px] absolute z-10 top-[250px] left-[450px] cursor-pointer">
           {priorit.map((priority, index) => (
-            <label key={index} className="flex items-center gap-3 cursor-pointer py-2">
+            <label
+              key={index}
+              className="flex items-center gap-3 cursor-pointer py-2"
+            >
               <input
                 type="checkbox"
                 checked={selectedPriorities.includes(priority.name)}
@@ -140,7 +146,9 @@ const Home = () => {
             <article
               key={index}
               className="w-[371px] text-white border border-solid border-black px-[137px] py-[15px] text-20px flex justify-center items-center cursor-pointer"
-              style={{ backgroundColor: colorPalette[index % colorPalette.length] }}
+              style={{
+                backgroundColor: colorPalette[index % colorPalette.length],
+              }}
             >
               {item.name}
             </article>

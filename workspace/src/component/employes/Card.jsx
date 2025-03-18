@@ -1,39 +1,41 @@
 import React from "react";
-import Comments from "./Comments.svg"
-import level from "./level.svg"
-import "../../reset.css"
+import Comments from "./Comments.svg";
+import "../../reset.css";
 
-const Card = ({ employee }) => {
+const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
   const shortname = employee.department.name.split(" ")[0];
 
-  const currentdata =()=>{
-    const today= new Date()
-    const day=today.getDate()
-    const month=today.getMonth() +1
-    const years=today.getFullYear()
-  
-    return `${day}/${month}/${years}`;
-    }
+  const currentData = () => {
+    const today = new Date();
+    return `${today.getDate()}/${today.getMonth() + 1}/${today.getFullYear()}`;
+  };
 
   return (
-    <article className="flex flex-col w-[381px]  border border-solid gap-y-[28px] border-orange-500 rounded-[15px] py-[20px] px-[30.5px]">
+    <article className="flex flex-col w-[381px] border border-solid gap-y-[28px] border-orange-500 rounded-[15px] py-[20px] px-[30.5px]">
       <article className="flex justify-between">
-        <img src={level}/>
-        <article className=" bg-orange-500 py-[5px] px-[18.5px] rounded-2xl">
-        <p>{shortname}</p>
+        <div
+          style={{ backgroundColor: bgPriorit }}
+          className="w-[30px] h-[30px] flex justify-center items-center rounded-full"
+        >
+          {priorit.name || "N/A"}
+        </div>
+        <article style={{ backgroundColor: bgColor }} className="px-[18.5px] rounded-2xl flex justify-center items-center">
+          <p>{shortname}</p>
         </article>
-        <p>{currentdata()}</p>
+        <p>{currentData()}</p>
       </article>
+      
       <article className="flex flex-col gap-y-[12px]">
-        <article className="flex justify-center gap-x-[10px]">
-        <p className="font-bold">{employee.name}</p>
-        <p className="font-bold">{employee.surname}</p>
+        <article className="flex justify-center gap-x-[10px] font-bold">
+          <p>{employee.name}</p>
+          <p>{employee.surname}</p>
         </article>
-      <p>შექმენი საიტის მთავარი გვერდი, რომელიც მოიცავს მთავარ სექციებს, ნავიგაციას.</p>
+        <p>შექმენი საიტის მთავარი გვერდი, რომელიც მოიცავს მთავარ სექციებს, ნავიგაციას.</p>
       </article>
+
       <article className="flex justify-between">
-        <img className="w-8 rounded-full" src={employee.avatar}/>
-      <img src={Comments}/>
+        <img className="w-8 rounded-full" src={employee.avatar} alt={`${employee.name} Avatar`} />
+        <img src={Comments} alt="Comments Icon" />
       </article>
     </article>
   );
