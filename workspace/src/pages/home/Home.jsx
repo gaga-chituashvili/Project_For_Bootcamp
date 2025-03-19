@@ -9,7 +9,7 @@ import vector from "./vector.svg";
 const colorPalette = ["#FF5733", "#FF0000", "#FF69B4", "#0000FF"];
 
 const Home = () => {
-  const [data, setData] = useState([]);
+  const [status, setStatus] = useState([]);
   const [departments, setDepartments] = useState([]);
   const [selectedDepartments, setSelectedDepartments] = useState([]);
   const [priorit, setPriorit] = useState([]);
@@ -18,7 +18,7 @@ const Home = () => {
   const [showPriorities, setShowPriorities] = useState(false);
 
   useEffect(() => {
-    statusApi().then(setData).catch(console.error);
+    statusApi().then(setStatus).catch(console.error);
     departaments().then(setDepartments).catch(console.error);
     priorities().then(setPriorit).catch(console.error);
   }, []);
@@ -39,15 +39,7 @@ const Home = () => {
     );
   }
 
-  const filteredData = data.filter((task) => {
-    const matchesDepartment =
-      selectedDepartments.length === 0 || selectedDepartments.includes(task.department);
-
-    const matchesPriority =
-      selectedPriorities.length === 0 || selectedPriorities.includes(task.priority);
-
-    return matchesDepartment && matchesPriority;
-  });
+ 
 
   return (
     <section className="flex flex-col gap-y-6">
@@ -112,8 +104,8 @@ const Home = () => {
 
       <section className="flex flex-col gap-y-[30px]">
         <article className="flex gap-x-[52px] justify-center">
-          {filteredData && (
-            filteredData.map((item, index) => (
+         
+            {status.map((item, index) => (
               <article
                 key={index}
                 className="w-[371px] text-white border border-solid border-black px-[137px] py-[15px] text-20px flex justify-center items-center cursor-pointer"
@@ -124,8 +116,8 @@ const Home = () => {
                 {item.name}
               </article>
             ))
-          ) 
-         }
+          }
+        
         </article>
         <Employes Employes={selectedDepartments} />
       </section>

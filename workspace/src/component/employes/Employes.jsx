@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { getEmployees } from "../../api/employes";
 import Card from "./Card";
 import { ClimbingBoxLoader } from "react-spinners";
-import AddEmployee from "./AddEmployee";
 import "../../reset.css";
 import { priorities } from "../../api/priorities";
 
 const Employee = ({ Employes }) => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [showAddEmployee, setShowAddEmployee] = useState(false);
   const [priorit, setPriorit] = useState([]);
 
   const colorPatternDepartments = ["#FF0000", "#FF5733", "#a9cec2", "#FD9A6A", "#89B6FF", "#FFD86D", "#fcecb3"];
@@ -29,10 +27,6 @@ const Employee = ({ Employes }) => {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleAddEmployee = (newEmployee) => {
-    setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
-    setShowAddEmployee(false);
-  };
 
   const filteredEmployees =
     Employes.length > 0
@@ -42,12 +36,6 @@ const Employee = ({ Employes }) => {
   return (
     <section className="flex flex-col items-center gap-y-[100px]">
       <article className="relative">
-        <button
-          className="w-[300px] absolute top-0 left-[500px] mt-6 px-6 py-2 flex justify-center items-center p-[20px] rounded-2xl border border-solid border-[#8888EC] cursor-pointer"
-          onClick={() => setShowAddEmployee(true)}
-        >
-          თანამშრომლის შექმნა
-        </button>
       </article>
 
       <section className="flex flex-wrap justify-center gap-y-[30px] gap-x-[52px] relative">
@@ -71,9 +59,6 @@ const Employee = ({ Employes }) => {
         )}
       </section>
 
-      {showAddEmployee && (
-        <AddEmployee onClose={() => setShowAddEmployee(false)} onAdd={handleAddEmployee} />
-      )}
     </section>
   );
 };

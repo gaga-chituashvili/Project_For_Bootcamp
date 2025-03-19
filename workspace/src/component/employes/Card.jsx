@@ -22,7 +22,7 @@ const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
           style={{ backgroundColor: bgPriorit }}
           className="w-[30px] h-[30px] flex justify-center items-center rounded-full"
         >
-          {priorit.name || "N/A"}
+          {priorit.name || ""}
         </div>
         <article style={{ backgroundColor: bgColor }} className="px-[18.5px] rounded-2xl flex justify-center items-center">
           <p>{shortname}</p>
