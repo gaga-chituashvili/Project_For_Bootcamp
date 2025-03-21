@@ -5,7 +5,7 @@ import "../../reset.css";
 import { routes } from "../../constant/route";
 
 const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
-  const shortname = employee.department.name.split(" ")[0] || "N/A"; 
+  const shortname = employee.department.name.split(" ")[0] || ""; 
 
   const navigate = useNavigate();
 
