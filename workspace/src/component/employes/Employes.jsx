@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { getEmployees } from "../../api/employes";
 import Card from "./Card";
 import { ClimbingBoxLoader } from "react-spinners";
@@ -25,27 +25,38 @@ const Employee = ({ Employes }) => {
     setLoading(true);
     getEmployees()
       .then((employees) => setEmployees(employees))
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error(error);
+        alert("Failed to fetch employees. Please try again later.");
+      })
       .finally(() => setLoading(false));
   }, []);
 
   useEffect(() => {
     priorities()
       .then((data) => setPriorit(data))
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error(error);
+        alert("Failed to fetch priorities. Please try again later.");
+      });
   }, []);
 
-  const filteredEmployees =
-    Employes.length > 0
+  const filteredEmployees = useMemo(() => {
+    return Employes.length > 0
       ? employees.filter((emp) => Employes.includes(emp.department.name))
       : employees;
+  }, [employees, Employes]);
 
   return (
     <section className="flex flex-col items-center gap-y-[100px]">
       <article className="relative"></article>
 
       <section className="flex flex-wrap justify-center gap-y-[30px] gap-x-[52px] relative">
-        {loading && <ClimbingBoxLoader color="#827ec5" size={15} />}
+        {loading && (
+          <div className="absolute inset-0 flex justify-center items-center">
+            <ClimbingBoxLoader color="#827ec5" size={15} />
+          </div>
+        )}
         {filteredEmployees.map((employee, index) => {
           const employeePriority =
             priorit.find((p) => p.id === employee.priorityId) || {};

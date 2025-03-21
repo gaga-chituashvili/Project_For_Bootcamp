@@ -5,7 +5,7 @@ import "../../reset.css";
 import { routes } from "../../constant/route";
 
 const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
-  const shortname = employee.department.name.split(" ")[0];
+  const shortname = employee.department.name.split(" ")[0] || "N/A"; 
 
   const navigate = useNavigate();
 
@@ -47,9 +47,20 @@ const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
         <img
           className="w-8 rounded-full"
           src={employee.avatar}
-          alt={`${employee.name} Avatar`}
+          alt={`${employee.name} ${employee.surname} Avatar`} 
         />
-        <img onClick={() => navigate(routes.commentar)} src={Comments} />
+        <button
+          onClick={() => navigate(routes.commentar)}
+          onKeyDown={(e) => e.key === "Enter" && navigate(routes.commentar)}
+          tabIndex="0" 
+          className="w-8 h-8"
+        >
+          <img
+            src={Comments}
+            alt="Comments" 
+            className="w-full h-full" 
+          />
+        </button>
       </article>
     </article>
   );
