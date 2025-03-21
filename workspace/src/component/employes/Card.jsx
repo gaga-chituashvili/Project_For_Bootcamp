@@ -5,10 +5,9 @@ import "../../reset.css";
 import { routes } from "../../constant/route";
 
 const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
-
   const shortname = employee.department.name.split(" ")[0];
 
-   const navigate=useNavigate()
+  const navigate = useNavigate();
 
   const currentData = () => {
     const today = new Date();
@@ -24,23 +23,33 @@ const Card = ({ employee, bgColor, priorit, bgPriorit }) => {
         >
           {priorit.name || ""}
         </div>
-        <article style={{ backgroundColor: bgColor }} className="px-[18.5px] rounded-2xl flex justify-center items-center">
+        <article
+          style={{ backgroundColor: bgColor }}
+          className="px-[18.5px] rounded-2xl flex justify-center items-center"
+        >
           <p>{shortname}</p>
         </article>
         <p>{currentData()}</p>
       </article>
-      
+
       <article className="flex flex-col gap-y-[12px]">
         <article className="flex justify-center gap-x-[10px] font-bold">
           <p>{employee.name}</p>
           <p>{employee.surname}</p>
         </article>
-        <p>შექმენი საიტის მთავარი გვერდი, რომელიც მოიცავს მთავარ სექციებს, ნავიგაციას.</p>
+        <p>
+          შექმენი საიტის მთავარი გვერდი, რომელიც მოიცავს მთავარ სექციებს,
+          ნავიგაციას.
+        </p>
       </article>
 
       <article className="flex justify-between">
-        <img className="w-8 rounded-full" src={employee.avatar} alt={`${employee.name} Avatar`} />
-        <img onClick={()=>navigate(routes.commentar)} src={Comments} />
+        <img
+          className="w-8 rounded-full"
+          src={employee.avatar}
+          alt={`${employee.name} Avatar`}
+        />
+        <img onClick={() => navigate(routes.commentar)} src={Comments} />
       </article>
     </article>
   );

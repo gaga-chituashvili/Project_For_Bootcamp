@@ -7,7 +7,9 @@ import "../../reset.css";
 
 const AddEmployee = ({ onClose, onAdd }) => {
   const [departments, setDepartments] = useState([]);
-  const [selectedDepartment, setSelectedDepartment] = useState("აირჩიეთ დეპარტამენტი");
+  const [selectedDepartment, setSelectedDepartment] = useState(
+    "აირჩიეთ დეპარტამენტი",
+  );
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -31,7 +33,11 @@ const AddEmployee = ({ onClose, onAdd }) => {
   };
 
   const handleSubmit = () => {
-    if (name.length < 2 || surname.length < 2 || selectedDepartment === "აირჩიეთ დეპარტამენტი") {
+    if (
+      name.length < 2 ||
+      surname.length < 2 ||
+      selectedDepartment === "აირჩიეთ დეპარტამენტი"
+    ) {
       alert("გთხოვთ, შეავსეთ ყველა ველი.");
       return;
     }
@@ -82,7 +88,11 @@ const AddEmployee = ({ onClose, onAdd }) => {
         <article className="flex flex-col items-center gap-y-6">
           <p className="text-sm font-medium">ავატარი *</p>
           <label htmlFor="avatar-upload" className="cursor-pointer">
-            <img className="w-16 h-16 rounded-full object-cover" src={image || uploadIcon} alt="Avatar" />
+            <img
+              className="w-16 h-16 rounded-full object-cover"
+              src={image || uploadIcon}
+              alt="Avatar"
+            />
           </label>
           <input
             id="avatar-upload"
@@ -100,7 +110,11 @@ const AddEmployee = ({ onClose, onAdd }) => {
             className="relative w-full h-11 border border-gray-300 rounded-md flex items-center p-2 cursor-pointer"
           >
             <span className="text-gray-500">{selectedDepartment}</span>
-            <img className="absolute right-4 w-5 h-5" src={down} alt="Dropdown" />
+            <img
+              className="absolute right-4 w-5 h-5"
+              src={down}
+              alt="Dropdown"
+            />
           </div>
 
           {dropdownOpen && (
@@ -122,10 +136,16 @@ const AddEmployee = ({ onClose, onAdd }) => {
         </article>
 
         <article className="flex gap-x-6 mt-6">
-          <button onClick={onClose} className="px-6 py-2 border border-gray-400 rounded-md text-gray-600">
+          <button
+            onClick={onClose}
+            className="px-6 py-2 border border-gray-400 rounded-md text-gray-600"
+          >
             გაუქმდა
           </button>
-          <button onClick={handleSubmit} className="px-6 py-2 bg-purple-600 text-white rounded-md">
+          <button
+            onClick={handleSubmit}
+            className="px-6 py-2 bg-purple-600 text-white rounded-md"
+          >
             დაამატე თანამშრომელი
           </button>
         </article>

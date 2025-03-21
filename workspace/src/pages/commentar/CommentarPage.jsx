@@ -45,24 +45,27 @@ const CommentarPage = () => {
               <p>დავალების ვადა</p>
             </article>
             <input
-                type="date"
-                className="w-[318px] h-[45px] border border-gray-300 rounded-md"
-              />
+              type="date"
+              className="w-[318px] h-[45px] border border-gray-300 rounded-md"
+            />
           </article>
         </section>
       </section>
       <aside className="h-[975px] flex flex-col gap-y-[66px]  px-[45px] py-[40px] bg-[#DDD2FF]">
         <article className="relative w-[651px] h-[135px]">
-          <textarea placeholder="დაწერე კომენტარი" className="w-full h-full resize-none pl-[20px] pt-[20px] rounded-[10px] border border-[#ADB5BD]" />
+          <textarea
+            placeholder="დაწერე კომენტარი"
+            className="w-full h-full resize-none pl-[20px] pt-[20px] rounded-[10px] border border-[#ADB5BD]"
+          />
           <button className="absolute bottom-2 right-2 w-[155px] h-[35px] bg-[#8338EC] rounded-lg text-white">
             დააკომენტარე
           </button>
         </article>
         <article className="flex gap-x-[7px]">
-        <span className="text-[20px] text-left">კომენტარები</span>
-        <div className="w-[30px] h-[22px] bg-[#8338EC] rounded-[30px]">
-          total
-        </div>
+          <span className="text-[20px] text-left">კომენტარები</span>
+          <div className="w-[30px] h-[22px] bg-[#8338EC] rounded-[30px]">
+            total
+          </div>
         </article>
         <section className="flex flex-col gap-y-[38px]">
           <article className="flex flex-col gap-y-[8px]">

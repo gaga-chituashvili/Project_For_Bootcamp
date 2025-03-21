@@ -27,7 +27,7 @@ const Home = () => {
     setSelectedDepartments((prev) =>
       prev.includes(departmentName)
         ? prev.filter((dep) => dep !== departmentName)
-        : [...prev, departmentName]
+        : [...prev, departmentName],
     );
   }
 
@@ -35,11 +35,9 @@ const Home = () => {
     setSelectedPriorities((prev) =>
       prev.includes(priority)
         ? prev.filter((p) => p !== priority)
-        : [...prev, priority]
+        : [...prev, priority],
     );
   }
-
- 
 
   return (
     <section className="flex flex-col gap-y-6">
@@ -48,11 +46,17 @@ const Home = () => {
       </section>
 
       <section className="w-[688px] flex justify-center gap-x-[52px] py-[18.5px] px-[12px] border border-solid border-[#DEE2E6] ml-[120px]">
-        <article className="flex gap-x-[8px]" onClick={() => setShowDepartments(!showDepartments)}>
+        <article
+          className="flex gap-x-[8px]"
+          onClick={() => setShowDepartments(!showDepartments)}
+        >
           <h4>დეპარტამენტი</h4>
           <img className="w-[25px]" src={direction} alt="direction" />
         </article>
-        <article className="flex gap-x-[8px]" onClick={() => setShowPriorities(!showPriorities)}>
+        <article
+          className="flex gap-x-[8px]"
+          onClick={() => setShowPriorities(!showPriorities)}
+        >
           <h4>პრიორიტეტი</h4>
           <img className="w-[25px]" src={direction} alt="direction" />
         </article>
@@ -65,7 +69,10 @@ const Home = () => {
       {showDepartments && (
         <section className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white w-[400px] absolute z-10 top-[250px]">
           {departments.map((department, index) => (
-            <label key={index} className="flex items-center gap-3 cursor-pointer py-2">
+            <label
+              key={index}
+              className="flex items-center gap-3 cursor-pointer py-2"
+            >
               <article
                 className={`w-[22px] h-[22px] flex justify-center items-center border border-solid border-black cursor-pointer ${
                   selectedDepartments.includes(department.name) || "bg-white"
@@ -85,15 +92,22 @@ const Home = () => {
       {showPriorities && (
         <article className="border border-gray-300 rounded-lg p-4 shadow-lg bg-white w-[400px] absolute z-10 top-[250px] left-[450px] cursor-pointer">
           {priorit.map((priority, index) => (
-            <label key={index} className="flex items-center gap-3 cursor-pointer py-2">
+            <label
+              key={index}
+              className="flex items-center gap-3 cursor-pointer py-2"
+            >
               <article
                 className={`w-[22px] h-[22px] flex justify-center items-center border border-solid border-black cursor-pointer ${
-                  selectedPriorities.includes(priority.name) ||"bg-white"
+                  selectedPriorities.includes(priority.name) || "bg-white"
                 }`}
                 onClick={() => handlePriorityChange(priority.name)}
               >
                 {selectedPriorities.includes(priority.name) && (
-                  <img src={vector} alt="vector" className="w-[16px] h-[16px]" />
+                  <img
+                    src={vector}
+                    alt="vector"
+                    className="w-[16px] h-[16px]"
+                  />
                 )}
               </article>
               <span>{priority.name}</span>
@@ -104,20 +118,17 @@ const Home = () => {
 
       <section className="flex flex-col gap-y-[30px]">
         <article className="flex gap-x-[52px] justify-center">
-         
-            {status.map((item, index) => (
-              <article
-                key={index}
-                className="w-[371px] text-white border border-solid border-black px-[137px] py-[15px] text-20px flex justify-center items-center cursor-pointer"
-                style={{
-                  backgroundColor: colorPalette[index % colorPalette.length],
-                }}
-              >
-                {item.name}
-              </article>
-            ))
-          }
-        
+          {status.map((item, index) => (
+            <article
+              key={index}
+              className="w-[371px] text-white border border-solid border-black px-[137px] py-[15px] text-20px flex justify-center items-center cursor-pointer"
+              style={{
+                backgroundColor: colorPalette[index % colorPalette.length],
+              }}
+            >
+              {item.name}
+            </article>
+          ))}
         </article>
         <Employes Employes={selectedDepartments} />
       </section>
