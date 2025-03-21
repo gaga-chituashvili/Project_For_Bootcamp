@@ -30,12 +30,17 @@ const Header = () => {
   return (
     <>
       <header className="w-full h-[100px] flex justify-between bg-white p-[30px]">
-        <img onClick={() => navigate(routes.home)} className="w-[250px]" src={logo} alt="Logo" />
+        <img
+          onClick={() => navigate(routes.home)}
+          className="w-[250px]"
+          src={logo}
+          alt="Logo"
+        />
         <article className="flex gap-x-[40px]">
-          <article
-            className="flex justify-center items-center w-[250px] p-[20px] rounded-2xl border border-solid border-[#8888EC] cursor-pointer"
-          >
-            <button onClick={() => setShowAddEmployee(true)}>თანამშრომლის შექმნა</button>
+          <article className="flex justify-center items-center w-[250px] p-[20px] rounded-2xl border border-solid border-[#8888EC] cursor-pointer">
+            <button onClick={() => setShowAddEmployee(true)}>
+              თანამშრომლის შექმნა
+            </button>
           </article>
           <article
             className="flex items-center gap-x-[20px] w-[300px] bg-[#8338EC] px-[10px] py-[20px] rounded-2xl cursor-pointer"
@@ -48,7 +53,10 @@ const Header = () => {
       </header>
 
       {showAddEmployee && (
-        <AddEmployee onClose={() => setShowAddEmployee(false)} onAdd={handleAddEmployee} />
+        <AddEmployee
+          onClose={() => setShowAddEmployee(false)}
+          onAdd={handleAddEmployee}
+        />
       )}
     </>
   );

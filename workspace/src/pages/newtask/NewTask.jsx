@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from "react";
 import { departaments } from "../../api/departaments";
 import { priorities } from "../../api/priorities";
@@ -13,7 +11,9 @@ const NewTask = () => {
   const [prioritiesList, setPrioritiesList] = useState([]);
   const [statusList, setStatusList] = useState([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedDepartment, setSelectedDepartment] = useState("აირჩიეთ დეპარტამენტი");
+  const [selectedDepartment, setSelectedDepartment] = useState(
+    "აირჩიეთ დეპარტამენტი",
+  );
   const [selectedPriorities, setSelectedPriorities] = useState([]);
   const [showPriorities, setShowPriorities] = useState(false);
   const [selectedStatus, setSelectedStatus] = useState([]);
@@ -35,7 +35,7 @@ const NewTask = () => {
     setSelectedPriorities((prev) =>
       prev.includes(priority)
         ? prev.filter((p) => p !== priority)
-        : [...prev, priority]
+        : [...prev, priority],
     );
   }
 
@@ -56,7 +56,7 @@ const NewTask = () => {
     setSelectedStatus((prev) =>
       prev.includes(status)
         ? prev.filter((s) => s !== status)
-        : [...prev, status]
+        : [...prev, status],
     );
   }
 
@@ -67,7 +67,6 @@ const NewTask = () => {
     }
   }
 
-  
   return (
     <section className="flex flex-col gap-y-[25px] px-[118px] mb-[386px]">
       <h3 className="text-[34px] text-left">შექმენი ახალი დავალება</h3>
@@ -139,11 +138,10 @@ const NewTask = () => {
                       >
                         <article
                           className={`w-[22px] h-[22px] flex justify-center items-center border border-solid border-black cursor-pointer ${
-                            selectedPriorities.includes(priority.name) ||"bg-white"
+                            selectedPriorities.includes(priority.name) ||
+                            "bg-white"
                           }`}
-                          onClick={() =>
-                            handlePriorityChange(priority.name)
-                          }
+                          onClick={() => handlePriorityChange(priority.name)}
                         >
                           {selectedPriorities.includes(priority.name) && (
                             <img src={vector} className="w-[16px] h-[16px]" />
@@ -179,9 +177,7 @@ const NewTask = () => {
                           className={`w-[22px] h-[22px] flex justify-center items-center border border-solid border-black cursor-pointer ${
                             selectedStatus.includes(status.name) || "bg-white"
                           }`}
-                          onClick={() =>
-                            handleStatusChange(status.name)
-                          }
+                          onClick={() => handleStatusChange(status.name)}
                         >
                           {selectedStatus.includes(status.name) && (
                             <img src={vector} className="w-[16px] h-[16px]" />

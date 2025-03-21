@@ -5,8 +5,8 @@ import approutes from "./config/routes";
 const AppRoutes = () => {
   return (
     <Routes>
-      {approutes.map((routes) => (
-        <Route path={routes.path} Component={routes.Component} />
+      {approutes.map((routes, index) => (
+        <Route key={index} path={routes.path} Component={routes.Component} />
       ))}
     </Routes>
   );
